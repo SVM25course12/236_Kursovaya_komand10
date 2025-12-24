@@ -1,0 +1,235 @@
+[
+    {
+        "model": "salon.saloninfo",
+        "pk": 1,
+        "fields": {
+            "name": "Салон красоты Elegance",
+            "tagline": "Ваша красота — наша забота",
+            "about_text": "Добро пожаловать в салон красоты Elegance!\n\nМы работаем с 2015 года и за это время стали любимым местом для тысяч клиентов. Наша команда — это профессионалы с многолетним опытом, которые постоянно совершенствуют свои навыки и следят за последними трендами индустрии красоты.\n\nМы используем только качественные материалы от ведущих мировых производителей и гарантируем безопасность каждой процедуры.",
+            "hero_image": ""
+        }
+    },
+    {
+        "model": "salon.contact",
+        "pk": 1,
+        "fields": {
+            "address": "г. Москва, ул. Примерная, д. 123",
+            "phone": "+7 (495) 123-45-67",
+            "email": "info@elegance-salon.ru",
+            "working_hours": "Пн-Сб: 9:00-21:00, Вс: 10:00-18:00",
+            "map_embed": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2245.3714489837045!2d37.618423!3d55.755826!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54a50b315e573%3A0xa886bf5a3d9b2e68!2z0JrRgNCw0YHQvdCw0Y8g0L_Qu9C-0YnQsNC00Yw!5e0!3m2!1sru!2sru!4v1234567890\" width=\"100%\" height=\"100%\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\"></iframe>",
+            "vk_link": "https://vk.com/elegance_salon",
+            "instagram_link": "",
+            "telegram_link": "https://t.me/elegance_salon"
+        }
+    },
+    {
+        "model": "salon.service",
+        "pk": 1,
+        "fields": {
+            "name": "Женская стрижка",
+            "description": "Стрижка с учётом типа волос и формы лица",
+            "price": "1500.00",
+            "duration": 60,
+            "category": "hair",
+            "image": "",
+            "is_active": true
+        }
+    },
+    {
+        "model": "salon.service",
+        "pk": 2,
+        "fields": {
+            "name": "Мужская стрижка",
+            "description": "Классическая или модельная стрижка",
+            "price": "800.00",
+            "duration": 30,
+            "category": "hair",
+            "image": "",
+            "is_active": true
+        }
+    },
+    {
+        "model": "salon.service",
+        "pk": 3,
+        "fields": {
+            "name": "Окрашивание волос",
+            "description": "Профессиональное окрашивание любой сложности",
+            "price": "3500.00",
+            "duration": 120,
+            "category": "hair",
+            "image": "",
+            "is_active": true
+        }
+    },
+    {
+        "model": "salon.service",
+        "pk": 4,
+        "fields": {
+            "name": "Укладка волос",
+            "description": "Вечерняя или повседневная укладка",
+            "price": "1200.00",
+            "duration": 45,
+            "category": "hair",
+            "image": "",
+            "is_active": true
+        }
+    },
+    {
+        "model": "salon.service",
+        "pk": 5,
+        "fields": {
+            "name": "Маникюр классический",
+            "description": "Обработка ногтей и кутикулы",
+            "price": "800.00",
+            "duration": 40,
+            "category": "nails",
+            "image": "",
+            "is_active": true
+        }
+    },
+    {
+        "model": "salon.service",
+        "pk": 6,
+        "fields": {
+            "name": "Маникюр с покрытием гель-лак",
+            "description": "Маникюр + долговременное покрытие",
+            "price": "1500.00",
+            "duration": 60,
+            "category": "nails",
+            "image": "",
+            "is_active": true
+        }
+    },
+    {
+        "model": "salon.service",
+        "pk": 7,
+        "fields": {
+            "name": "Педикюр классический",
+            "description": "Комплексный уход за стопами",
+            "price": "1200.00",
+            "duration": 60,
+            "category": "nails",
+            "image": "",
+            "is_active": true
+        }
+    },
+    {
+        "model": "salon.service",
+        "pk": 8,
+        "fields": {
+            "name": "Чистка лица",
+            "description": "Глубокое очищение кожи",
+            "price": "2500.00",
+            "duration": 90,
+            "category": "face",
+            "image": "",
+            "is_active": true
+        }
+    },
+    {
+        "model": "salon.service",
+        "pk": 9,
+        "fields": {
+            "name": "Пилинг",
+            "description": "Химический или механический пилинг",
+            "price": "2000.00",
+            "duration": 60,
+            "category": "face",
+            "image": "",
+            "is_active": true
+        }
+    },
+    {
+        "model": "salon.service",
+        "pk": 10,
+        "fields": {
+            "name": "Макияж дневной",
+            "description": "Естественный макияж на каждый день",
+            "price": "1500.00",
+            "duration": 40,
+            "category": "makeup",
+            "image": "",
+            "is_active": true
+        }
+    },
+    {
+        "model": "salon.service",
+        "pk": 11,
+        "fields": {
+            "name": "Макияж вечерний",
+            "description": "Яркий макияж для особых случаев",
+            "price": "2500.00",
+            "duration": 60,
+            "category": "makeup",
+            "image": "",
+            "is_active": true
+        }
+    },
+    {
+        "model": "salon.master",
+        "pk": 1,
+        "fields": {
+            "name": "Анна Петрова",
+            "photo": "",
+            "specialization": "Стилист-парикмахер",
+            "experience": 8,
+            "bio": "Анна — мастер с восьмилетним стажем, специализируется на сложных окрашиваниях и модных стрижках. Постоянно посещает мастер-классы ведущих стилистов.",
+            "is_active": true,
+            "services": [1, 3, 4]
+        }
+    },
+    {
+        "model": "salon.master",
+        "pk": 2,
+        "fields": {
+            "name": "Мария Иванова",
+            "photo": "",
+            "specialization": "Мастер маникюра и педикюра",
+            "experience": 5,
+            "bio": "Мария — сертифицированный мастер ногтевого сервиса. Владеет всеми современными техниками дизайна ногтей.",
+            "is_active": true,
+            "services": [5, 6, 7]
+        }
+    },
+    {
+        "model": "salon.master",
+        "pk": 3,
+        "fields": {
+            "name": "Елена Сидорова",
+            "photo": "",
+            "specialization": "Косметолог",
+            "experience": 10,
+            "bio": "Елена — дипломированный косметолог с медицинским образованием. Специализируется на уходовых процедурах и anti-age терапии.",
+            "is_active": true,
+            "services": [8, 9]
+        }
+    },
+    {
+        "model": "salon.master",
+        "pk": 4,
+        "fields": {
+            "name": "Ольга Козлова",
+            "photo": "",
+            "specialization": "Визажист",
+            "experience": 6,
+            "bio": "Ольга — профессиональный визажист, работала на показах мод и фотосессиях. Создаёт макияж любой сложности.",
+            "is_active": true,
+            "services": [10, 11]
+        }
+    },
+    {
+        "model": "salon.master",
+        "pk": 5,
+        "fields": {
+            "name": "Дмитрий Волков",
+            "photo": "",
+            "specialization": "Барбер",
+            "experience": 4,
+            "bio": "Дмитрий — мастер мужских стрижек и бритья. Создаёт классические и современные образы для мужчин.",
+            "is_active": true,
+            "services": [2]
+        }
+    }
+]
+

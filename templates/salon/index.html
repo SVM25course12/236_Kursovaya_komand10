@@ -1,0 +1,371 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if salon_info %}{{ salon_info.name }}{% else %}Салон красоты{% endif %}</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+
+
+
+    <nav class="side-nav" id="sideNav">
+        <ul>
+            <li>
+                <a href="#hero" class="nav-dot active" data-section="hero" title="Главная">
+                    <span class="nav-label">Главная</span>
+                </a>
+            </li>
+            <li>
+                <a href="#about" class="nav-dot" data-section="about" title="О нас">
+                    <span class="nav-label">О нас</span>
+                </a>
+            </li>
+            <li>
+                <a href="#services" class="nav-dot" data-section="services" title="Услуги">
+                    <span class="nav-label">Услуги</span>
+                </a>
+            </li>
+            <li>
+                <a href="#masters" class="nav-dot" data-section="masters" title="Мастера">
+                    <span class="nav-label">Мастера</span>
+                </a>
+            </li>
+            <li>
+                <a href="#booking" class="nav-dot" data-section="booking" title="Запись">
+                    <span class="nav-label">Запись</span>
+                </a>
+            </li>
+            <li>
+                <a href="#contacts" class="nav-dot" data-section="contacts" title="Контакты">
+                    <span class="nav-label">Контакты</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+
+
+
+    <main class="sections-container">
+
+        <section id="hero" class="section hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    {% if salon_info %}
+                        {{ salon_info.name }}
+                    {% else %}
+                        Салон красоты
+                    {% endif %}
+                </h1>
+                <p class="hero-tagline">
+                    {% if salon_info.tagline %}
+                        {{ salon_info.tagline }}
+                    {% else %}
+                        Ваша красота — наша забота
+                    {% endif %}
+                </p>
+                <a href="#booking" class="btn btn-primary hero-btn">Записаться онлайн</a>
+            </div>
+
+            <div class="scroll-indicator">
+                <span>Прокрутите вниз</span>
+                <div class="scroll-arrow"></div>
+            </div>
+        </section>
+
+
+        <section id="about" class="section about-section">
+            <div class="container">
+                <h2 class="section-title">О нашем салоне</h2>
+                <div class="about-content">
+                    {% if salon_info.about_text %}
+                        <p class="about-text">{{ salon_info.about_text|linebreaks }}</p>
+                    {% else %}
+                        <p class="about-text">
+                            Добро пожаловать в наш салон красоты! Мы предлагаем широкий спектр услуг
+                            для вашей красоты и здоровья. Наши опытные мастера используют только
+                            качественные материалы и современные технологии.
+                        </p>
+                    {% endif %}
+                    <div class="about-features">
+                        <div class="feature">
+                            <div class="feature-icon">✨</div>
+                            <h3>Качество</h3>
+                            <p>Используем только проверенные материалы</p>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-icon">👩‍🎨</div>
+                            <h3>Профессионализм</h3>
+                            <p>Опытные мастера с многолетним стажем</p>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-icon">💝</div>
+                            <h3>Забота</h3>
+                            <p>Индивидуальный подход к каждому клиенту</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="services" class="section services-section">
+            <div class="container">
+                <h2 class="section-title">Наши услуги</h2>
+                <div class="services-grid">
+                    {% for category, services_list in services_by_category.items %}
+                        <div class="service-category">
+                            <h3 class="category-title">{{ category }}</h3>
+                            <ul class="services-list">
+                                {% for service in services_list %}
+                                    <li class="service-item">
+                                        <div class="service-info">
+                                            <span class="service-name">{{ service.name }}</span>
+                                            {% if service.description %}
+                                                <span class="service-desc">{{ service.description }}</span>
+                                            {% endif %}
+                                        </div>
+                                        <div class="service-details">
+                                            <span class="service-duration">{{ service.duration }} мин</span>
+                                            <span class="service-price">{{ service.price|floatformat:0 }} ₽</span>
+                                        </div>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% empty %}
+                        <p class="no-data">Услуги скоро появятся</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+
+
+        <section id="masters" class="section masters-section">
+            <div class="container">
+                <h2 class="section-title">Наши мастера</h2>
+                <div class="masters-grid">
+                    {% for master in masters %}
+                        <div class="master-card">
+                            <div class="master-photo">
+                                {% if master.photo %}
+                                    <img src="{{ master.photo.url }}" alt="{{ master.name }}">
+                                {% else %}
+                                    <div class="master-photo-placeholder">
+                                        <span>👤</span>
+                                    </div>
+                                {% endif %}
+                            </div>
+                            <div class="master-info">
+                                <h3 class="master-name">{{ master.name }}</h3>
+                                <p class="master-spec">{{ master.specialization }}</p>
+                                <p class="master-exp">Стаж: {{ master.experience }} лет</p>
+                                {% if master.bio %}
+                                    <p class="master-bio">{{ master.bio|truncatewords:20 }}</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% empty %}
+                        <p class="no-data">Информация о мастерах скоро появится</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+
+
+        <section id="booking" class="section booking-section">
+            <div class="container">
+                <h2 class="section-title">Онлайн-запись</h2>
+                <p class="section-subtitle">Заполните форму, и мы свяжемся с вами для подтверждения</p>
+
+                <form id="bookingForm" class="booking-form">
+                    {% csrf_token %}
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="client_name">Ваше имя *</label>
+                            <input type="text"
+                                   id="client_name"
+                                   name="client_name"
+                                   required
+                                   placeholder="Как к вам обращаться?">
+                        </div>
+                        <div class="form-group">
+                            <label for="client_phone">Телефон *</label>
+                            <input type="tel"
+                                   id="client_phone"
+                                   name="client_phone"
+                                   required
+                                   placeholder="+7 (___) ___-__-__"
+                                   pattern="\+?7?\d{10,11}">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="client_email">Email (необязательно)</label>
+                            <input type="email"
+                                   id="client_email"
+                                   name="client_email"
+                                   placeholder="для отправки подтверждения">
+                        </div>
+                    </div>
+
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="service">Услуга *</label>
+                            <select id="service" name="service" required>
+                                <option value="">Выберите услугу</option>
+                                {% for service in services %}
+                                    <option value="{{ service.id }}"
+                                            data-price="{{ service.price }}"
+                                            data-duration="{{ service.duration }}">
+                                        {{ service.name }} — {{ service.price|floatformat:0 }} ₽
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="master">Мастер *</label>
+                            <select id="master" name="master" required>
+                                <option value="">Сначала выберите услугу</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="date">Дата *</label>
+                            <input type="date"
+                                   id="date"
+                                   name="date"
+                                   required>
+                        </div>
+                        <div class="form-group">
+                            <label for="time">Время *</label>
+                            <select id="time" name="time" required>
+                                <option value="">Выберите время</option>
+
+                                <option value="09:00">09:00</option>
+                                <option value="10:00">10:00</option>
+                                <option value="11:00">11:00</option>
+                                <option value="12:00">12:00</option>
+                                <option value="13:00">13:00</option>
+                                <option value="14:00">14:00</option>
+                                <option value="15:00">15:00</option>
+                                <option value="16:00">16:00</option>
+                                <option value="17:00">17:00</option>
+                                <option value="18:00">18:00</option>
+                                <option value="19:00">19:00</option>
+                                <option value="20:00">20:00</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="comment">Комментарий (необязательно)</label>
+                        <textarea id="comment"
+                                  name="comment"
+                                  rows="3"
+                                  placeholder="Ваши пожелания..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-submit">
+                        Записаться
+                    </button>
+
+                    <div id="formMessage" class="form-message"></div>
+                </form>
+            </div>
+        </section>
+
+        <section id="contacts" class="section contacts-section">
+            <div class="container">
+                <h2 class="section-title">Контакты</h2>
+                <div class="contacts-content">
+                    <div class="contacts-info">
+                        {% if contacts %}
+                            <div class="contact-item">
+                                <div class="contact-icon">📍</div>
+                                <div class="contact-text">
+                                    <strong>Адрес</strong>
+                                    <p>{{ contacts.address }}</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">📞</div>
+                                <div class="contact-text">
+                                    <strong>Телефон</strong>
+                                    <p><a href="tel:{{ contacts.phone }}">{{ contacts.phone }}</a></p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">✉️</div>
+                                <div class="contact-text">
+                                    <strong>Email</strong>
+                                    <p><a href="mailto:{{ contacts.email }}">{{ contacts.email }}</a></p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">🕐</div>
+                                <div class="contact-text">
+                                    <strong>Режим работы</strong>
+                                    <p>{{ contacts.working_hours }}</p>
+                                </div>
+                            </div>
+                            {% if contacts.vk_link or contacts.instagram_link or contacts.telegram_link %}
+                                <div class="social-links">
+                                    {% if contacts.vk_link %}
+                                        <a href="{{ contacts.vk_link }}" target="_blank" class="social-link">VK</a>
+                                    {% endif %}
+                                    {% if contacts.instagram_link %}
+                                        <a href="{{ contacts.instagram_link }}" target="_blank" class="social-link">Instagram</a>
+                                    {% endif %}
+                                    {% if contacts.telegram_link %}
+                                        <a href="{{ contacts.telegram_link }}" target="_blank" class="social-link">Telegram</a>
+                                    {% endif %}
+                                </div>
+                            {% endif %}
+                        {% else %}
+                            <p>Контактная информация скоро появится</p>
+                        {% endif %}
+                    </div>
+                    <div class="contacts-map">
+                        {% if contacts.map_embed %}
+                            {{ contacts.map_embed|safe }}
+                        {% else %}
+                            <div class="map-placeholder">
+                                <p>Карта будет добавлена позже</p>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 {% if salon_info %}{{ salon_info.name }}{% else %}Салон красоты{% endif %}. Все права защищены.</p>
+        </div>
+    </footer>
+
+
+    <script src="{% static 'js/navigation.js' %}"></script>
+    <script src="{% static 'js/booking.js' %}"></script>
+</body>
+</html>
+
